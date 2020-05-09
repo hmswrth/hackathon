@@ -58,14 +58,14 @@ public class BrowserSetup {
 		return driver1;
 	}
 	public static WebDriver setChromeDriver() { //Setting chrome driver
-		String driverPath = System.getProperty("user.dir") +"\\Drivers\\chromedriver.exe";
+		String driverPath = System.getProperty("user.dir") +"/Drivers/chromedriver";
 		System.setProperty("webdriver.chrome.driver",driverPath);
 		WebDriver driver2=new ChromeDriver(); //Instantiate chrome driver
 		return driver2;
 	}
 	
 	public static WebDriver setFirefoxDriver() {    // Setting  firefox Driver
-		String driverPath = System.getProperty("user.dir") + "\\Drivers\\geckodriver.exe"; 
+		String driverPath = System.getProperty("user.dir") + "/Drivers/geckodriver"; 
 				System.setProperty("webdriver.gecko.driver",driverPath);
 				WebDriver driver3=new FirefoxDriver(); //instantiate firefox driver
 		return driver3;
@@ -81,16 +81,16 @@ public class BrowserSetup {
 		 
 		Properties prop= new Properties();			// Used to Instantiate properties
 		String projectpath = System.getProperty("user.dir");
-		InputStream input = new FileInputStream(projectpath+ "//properties//properties");  //providing the path of Properties file
+		InputStream input = new FileInputStream(projectpath+ "/Application.properties");  //providing the path of Properties file
 		prop.load(input);
-		 String url1 = prop.getProperty("browser");
+		 String url = prop.getProperty("url");
 		 
-		driver.get(url1);  // to open the Website
+		driver.get(url);  // to open the Website
 		driver.manage().window().maximize();   // this is used to maximize the browser
 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
 	}
 	public static void closeBrowser() {      //to close the browser
-		// TODO Auto-generated method stub
+		driver.close();
 		
 	}
 
