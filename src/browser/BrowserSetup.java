@@ -78,7 +78,6 @@ public class BrowserSetup {
 
 	public static void closeBrowser() { // to close the browser
 		driver.close();
-
 	}
 
 }
