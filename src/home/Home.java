@@ -17,7 +17,7 @@ public class Home extends BrowserSetup {
 	public static WebElement element;
 	public static List<WebElement> courses;
 	public static boolean result = false;
-	public static Map<String, Object[]> dataset;
+	public static Map<Integer, Object[]> dataset;
 
 	public static void searchTextBox(String testData) { // pass testdata from excel to searchTextBox
 
@@ -78,11 +78,11 @@ public class Home extends BrowserSetup {
 
 			result = true;
 
-			dataset = new TreeMap<String, Object[]>();
-			dataset.put("1", new Object[] { "Course Title", "Author", "Total Lectures", "Total Hours", "Rating",
+			dataset = new TreeMap< Integer, Object[]>();
+			dataset.put(1, new Object[] { "Course Title", "Author", "Total Lectures", "Total Hours", "Rating",
 					"Total Ratings" });
 			for (int i = 0; i < 16; i++) {
-				dataset.put(Integer.toString(i + 2),
+				dataset.put(i+2,
 						new Object[] { courseTitles.get(i).getText(), authors.get(i).getText().replaceAll("By ", ""),
 								totalLectures.get(i).getText(), totalHours.get(i).getText(), rating.get(i).getText(),
 								totalRating.get(i).getText() });

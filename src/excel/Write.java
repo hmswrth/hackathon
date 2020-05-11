@@ -10,16 +10,16 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class Write {
-	public static void writeExcel(Map<String, Object[]> dataset) { // write test result to the excel file
+	public static void writeExcel(Map<Integer, Object[]> dataset) { // write test result to the excel file
 		// Blank workbook
 		XSSFWorkbook sample = new XSSFWorkbook();
 
 		// Blank sheet
 		XSSFSheet sheet = sample.createSheet("results");
 
-		Set<String> set = dataset.keySet();
+		Set<Integer> set = dataset.keySet();
 		int rowNo = 0;
-		for (String key : set) {
+		for (Integer key : set) {
 			Row row = sheet.createRow(rowNo++);
 			Object[] data = dataset.get(key);
 			int cellno = 0;
