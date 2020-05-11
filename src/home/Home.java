@@ -1,59 +1,131 @@
 package home;
 
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.concurrent.TimeUnit;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import org.testng.Reporter;
 
 import browser.BrowserSetup;
 import excel.*;
 import locators.Locators;
+import screenshot.CaptureScreen;
 
-public class Home extends BrowserSetup  {
-	
+public class Home extends BrowserSetup {
+	public static WebElement element;
+	public static List<WebElement> courses;
+	public static boolean result = false;
+	public static Map<String, Object[]> dataset;
 
+	public static void searchTextBox(String testData) { // pass testdata from excel to searchTextBox
 
-public void SearchTextBox(String testData) throws IOException {  //pass testdata from excel to searchTextBox
+		WebElement input = Locators.searchtTextBox();
+		input.sendKeys(testData, Keys.RETURN);
+		// driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(
+				By.xpath("//*[@id='udemy']/div[2]/div[3]/div/div/div[5]/div[1]/div[1]/div[1]/button")));
 
-	WebElement input = Locators.searchtTextBox();	
-	input.sendKeys(testData);
-	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-}
-public void filter() throws InterruptedException {  
-	WebElement filteroption = Locators.filter();
-	filteroption.click();
-	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	
-}
-public void filter1() throws InterruptedException { 
-	WebElement level = Locators.filter1();
-	level.click();
-	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-}
-public void filter2()  throws InterruptedException { 
-	WebElement language = Locators.filter2();
-	language.click();
-	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-}
-public void submit() throws InterruptedException { 
-     WebElement filterdone =Locators.submit();
- 	filterdone.click();
-}
+	}
 
-public void listofcourse()   throws Exception {  
-		String course=  Locators.listofcourse() 
-		System.out.println(course);
-		Write.writeExcel("course  :" + course);
-		Reporter.log("course are found succesfully");  // logging in test output report on success
-		
-}
-public static void closeDriver() {
-			BrowserSetup.closeBrowser(); // invoking method from browser class to close the browser
+	public static void filter() {
+		WebElement element = Locators.filter();
+		element.click();
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id='filter-form--13']/fieldset[3]/div[2]/label/span")));
+	}
+
+	public static void filter1() {
+		WebElement element = Locators.filter1();
+		element.click();
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='filter-form--13']/fieldset[4]/div[1]/label/span")));
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
-public static void takeScreenshot() throws Exception {
-			CaptureScreen.screenShot();    // invoking screenshot method of CaptureScreen class to capture the screenshot
+	}
+
+	public static void filter2() {
+		WebElement element = Locators.filter2();
+		element.click();
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='udemy']/div[2]/div[3]/div/div/div[5]/div[1]/div[1]/div[1]/button[1]")));
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
-		
+	}
+
+	public static void submit() {
+		WebElement element = Locators.submit();
+		element.click();
+	}
+
+	public static void listOfCourses() {
+		try {
+			courses = Locators.listOfCourses();
+			List<WebElement> courseTitles = courses.subList(0, 16);
+			List<WebElement> authors = courses.subList(16, 32);
+			List<WebElement> totalLectures = courses.subList(32, 48);
+			List<WebElement> totalHours = courses.subList(48, 64);
+			List<WebElement> rating = courses.subList(64, 80);
+			List<WebElement> totalRating = courses.subList(80, 96);
+
+			result = true;
+
+			dataset = new TreeMap<String, Object[]>();
+			dataset.put("1", new Object[] { "Course Title", "Author", "Total Lectures", "Total Hours", "Rating",
+					"Total Ratings" });
+			for (int i = 0; i < 16; i++) {
+				dataset.put(Integer.toString(i + 2),
+						new Object[] { courseTitles.get(i).getText(), authors.get(i).getText().replaceAll("By ", ""),
+								totalLectures.get(i).getText(), totalHours.get(i).getText(), rating.get(i).getText(),
+								totalRating.get(i).getText() });
+			}
+		} catch (Exception e) {
+			result = false;
+		}
+	}
+
+	public static void assert1() {
+		try {
+			Assert.assertTrue(result ? true : false);
+			System.out.println("Pass");
+			Write.writeExcel(dataset);
+			Reporter.log("Execution Successful!");
+		} catch (AssertionError e) {
+			System.out.println("Assertion Failed");
+			Reporter.log("Exection unsuccessful!");
+		}
+	}
+
+	public static void closeDriver() {
+		BrowserSetup.closeBrowser(); // invoking method from browser class to close the browser
+	}
+
+	public static void takeScreenshot() {
+		CaptureScreen.screenshot(); // invoking screenshot method of CaptureScreen class to capture the screenshot
+
+	}
+
+	public static void main(String[] args) {
+		setBrowser();
+		getUrl();
+		searchTextBox(Read.readExcel());
+		filter();
+		filter1();
+		filter2();
+		submit();
+		listOfCourses();
+		takeScreenshot();
+		assert1();
+		closeDriver();
+
+	}
+
 }

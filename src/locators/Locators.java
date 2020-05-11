@@ -1,53 +1,57 @@
 package locators;
 
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
+import java.util.*;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.JavascriptExecutor;
+
 import browser.BrowserSetup;
 
 public class Locators extends BrowserSetup {
-	public static void main(String[] args) throws InterruptedException, IOException {
-		setBrowser();
-		getUrl();
+	public static WebElement element;
+	public static JavascriptExecutor js = (JavascriptExecutor) driver;
 
-		driver.findElement(By.xpath("//*[@id='header-search-field']")).sendKeys("Web Development", Keys.RETURN);
-
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-
-		WebElement filterElement = driver
-				.findElement(By.xpath("//*[@id=\"udemy\"]/div[2]/div[3]/div/div/div[5]/div[1]/div[1]/div[1]/button"));
-
-		js.executeScript("arguments[0].scrollIntoView(true)", filterElement);
-
-		filterElement.click();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-		WebElement beginnerEl = driver
-				.findElement(By.xpath("//*[@id=\"filter-form--13\"]/fieldset[3]/div[2]/label/span"));
-		beginnerEl.click();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-		WebElement englishEl = driver
-				.findElement(By.xpath("//*[@id=\"filter-form--13\"]/fieldset[4]/div[1]/label/span"));
-		englishEl.click();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-		WebElement doneBtn = driver.findElement(
-				By.xpath("//*[@id=\"udemy\"]/div[2]/div[3]/div/div/div[5]/div[1]/div[1]/div[1]/button[1]"));
-		doneBtn.click();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-		for (int i = 0; i < 3; i++) {
-
-			System.out.println(driver.findElement(By.xpath("//*[@id=\"udemy\"]/div[2]/div[3]/div/div/div[5]/div[2]/div["
-					+ (i + 1) + "]/div/a/div/div[2]/div[1]/h4")).getText());
-		}
-
-		driver.close();
-
+	public static WebElement searchtTextBox() { // returns search box webElement
+		element = driver.findElement(By.xpath("//*[@id='header-search-field']"));
+		return element;
 	}
+
+	public static WebElement filter() {
+		element = driver.findElement(By.xpath("//*[@id='udemy']/div[2]/div[3]/div/div/div[5]/div[1]/div[1]/div[1]/button"));
+		js.executeScript("arguments[0].scrollIntoView(true)", element);
+		return element;
+	}
+
+	public static WebElement filter1() {
+		element = driver.findElement(By.xpath("//*[@id='filter-form--13']/fieldset[3]/div[2]/label/span"));
+		return element;
+	}
+
+	public static WebElement filter2() {
+		element = driver.findElement(By.xpath("//*[@id='filter-form--13']/fieldset[4]/div[1]/label/span"));
+		return element;
+	}
+
+	public static WebElement submit() {
+		element = driver.findElement(By.xpath("//*[@id='udemy']/div[2]/div[3]/div/div/div[5]/div[1]/div[1]/div[1]/button[1]"));
+		return element;
+	}
+
+	public static List<WebElement> listOfCourses() {
+		List <WebElement> listOfCourses = new ArrayList<WebElement>();
+		List <WebElement> courseNames = driver.findElements(By.xpath("//*[@id='udemy']/div[2]/div[3]/div/div/div[5]/div[2]/div/div/a/div/div[2]/div[1]/h4")); //course names
+		List <WebElement> authorNames = driver.findElements(By.xpath("//*[@id='udemy']/div[2]/div[3]/div/div/div[5]/div[2]/div/div/a/div/div[2]/div[4]/div/span[2]")); //authors
+		List <WebElement> lecturesCount = driver.findElements(By.xpath("//*[@id='udemy']/div[2]/div[3]/div/div/div[5]/div[2]/div/div/a/div/div[2]/div[2]/div/span[1]")); //lectures
+		List <WebElement> duration = driver.findElements(By.xpath("//*[@id='udemy']/div[2]/div[3]/div/div/div[5]/div[2]/div/div/a/div/div[2]/div[2]/div/span[2]")); //total hours
+		List <WebElement> rating = driver.findElements(By.xpath("//*[@id='udemy']/div[2]/div[3]/div/div/div[5]/div[2]/div/div/a/div/div[2]/div[5]/div[2]/div/span[1]")); //rating
+		List <WebElement> totalRating = driver.findElements(By.xpath("//*[@id='udemy']/div[2]/div[3]/div/div/div[5]/div[2]/div/div/a/div/div[2]/div[5]/div[2]/div/span[2]")); //total ratings
+		listOfCourses.addAll(courseNames);
+		listOfCourses.addAll(authorNames);
+		listOfCourses.addAll(lecturesCount);
+		listOfCourses.addAll(duration);
+		listOfCourses.addAll(rating);
+		listOfCourses.addAll(totalRating);
+		return listOfCourses;
+		
+	}
+
 }
