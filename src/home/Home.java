@@ -104,27 +104,8 @@ public class Home extends BrowserSetup {
 		}
 	}
 
-	public static void closeDriver() {
-		BrowserSetup.closeBrowser(); // invoking method from browser class to close the browser
-	}
-
 	public static void takeScreenshot() {
 		CaptureScreen.screenshot(); // invoking screenshot method of CaptureScreen class to capture the screenshot
-
-	}
-
-	public static void main(String[] args) {
-		setBrowser();
-		getUrl();
-		searchTextBox(Read.readExcel());
-		filter();
-		filter1();
-		filter2();
-		submit();
-		listOfCourses();
-		takeScreenshot();
-		assert1();
-		closeDriver();
 
 	}
 
