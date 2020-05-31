@@ -12,17 +12,31 @@ import org.testng.annotations.AfterTest;
 
 public class NewTest extends BrowserSetup {
 	@Test(dataProvider = "dp")
-	public void f( String s) {
+	public void udemyA( String s) {
+		Home.getUrl();
 		Home.searchTextBox(s);
+//		Home.filter();
+		Home.levelListBoxExpand();
+		Home.levelFilter();
+		Home.languageListBoxExpand();
+		Home.languageFilter();
 		Home.filter();
-		Home.filter1();
-		Home.filter2();
-		Home.submit();
 		Home.listOfCourses();
 		Home.takeScreenshot();
 		Home.assert1();
+		//Home.udemyBusiness();
+	
 	}
-
+	@Test
+	public void udemyB() {
+		Home.getUrl2();
+		Home.emailBox();
+		Home.getIntouch();
+		Home.getErrorMsg();
+		Home.takeScreenshot();
+		Home.assert2();
+	}
+	
 	@DataProvider
 	public Object[][] dp() {
 		Object[][] testData = new Object[1][1];
@@ -32,9 +46,7 @@ public class NewTest extends BrowserSetup {
 
 	@BeforeTest
 	public void beforeTest() {
-//		setBrowser();
-		setChromeDriver();
-		getUrl();
+		setBrowser();
 	}
 
 	@AfterTest
