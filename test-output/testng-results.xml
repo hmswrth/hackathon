@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+    <line>
+      <![CDATA[Execution Successful!]]>
+    </line>
+    <line>
+      <![CDATA[Exection Successful1]]>
+    </line>
+  </reporter-output>
+  <suite started-at="2020-06-01T01:03:39 IST" name="Default suite" finished-at="2020-06-01T01:04:13 IST" duration-ms="34474">
+    <groups>
+    </groups>
+    <test started-at="2020-06-01T01:03:39 IST" name="Default test" finished-at="2020-06-01T01:04:13 IST" duration-ms="34474">
+      <class name="test.java.NewTest">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:test.java.NewTest@3901d134]" started-at="2020-06-01T01:03:39 IST" name="beforeTest" finished-at="2020-06-01T01:03:41 IST" duration-ms="1903" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method signature="udemyA(java.lang.String)[pri:0, instance:test.java.NewTest@3901d134]" started-at="2020-06-01T01:03:42 IST" name="udemyA" data-provider="dp" finished-at="2020-06-01T01:04:06 IST" duration-ms="24145" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[web development]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Execution Successful!]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- udemyA -->
+        <test-method signature="udemyB()[pri:0, instance:test.java.NewTest@3901d134]" started-at="2020-06-01T01:04:06 IST" name="udemyB" finished-at="2020-06-01T01:04:13 IST" duration-ms="7251" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Exection Successful1]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- udemyB -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:test.java.NewTest@3901d134]" started-at="2020-06-01T01:04:13 IST" name="afterTest" finished-at="2020-06-01T01:04:13 IST" duration-ms="104" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+      </class> <!-- test.java.NewTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
