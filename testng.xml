@@ -3,7 +3,9 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="testNG.NewTest"/>
+    <class name="test.java.SmokeTest"/>
+      <class name="test.java.NewTest"/>
+      <class name="test.java.RegressionTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

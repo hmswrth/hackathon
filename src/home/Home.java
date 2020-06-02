@@ -14,6 +14,7 @@ import locators.Locators;
 import screenshot.CaptureScreen;
 
 public class Home extends BrowserSetup {
+	public static String resultTitle;
 	public static String errorMsg;
 	public static String parentWindowHandle;
 	public static Set<String> allWindowHandles;
@@ -24,7 +25,7 @@ public class Home extends BrowserSetup {
 
 	public static void searchTextBox(String testData) { // pass testdata from excel to searchTextBox
 
-		WebElement input = Locators.searchtTextBox();
+		WebElement input = Locators.searchTextBox();
 		input.sendKeys(testData, Keys.RETURN);
 		// driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 //		wait.until(ExpectedConditions.visibilityOfElementLocated(
@@ -34,10 +35,10 @@ public class Home extends BrowserSetup {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@for='filter-button' and @data-purpose='open-filters']")));
 	}
 
 	public static void filter() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@for='filter-button' and @data-purpose='open-filters']")));
 		WebElement element = Locators.filter();
 		element.click();
 //		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -174,8 +175,12 @@ public class Home extends BrowserSetup {
 		}
 	}
 	
-	
-	
+	public static void getResultPageTitle() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='udemy']/div[2]/div[4]/div/div/div[2]/div/h1")));
+		element = Locators.getResultPageTitle();
+		resultTitle = element.getText();
+		System.out.println(resultTitle);
+	}
 	public static void assert1() {
 		try {
 			Assert.assertTrue(result ? true : false);
@@ -197,6 +202,17 @@ public class Home extends BrowserSetup {
 		}catch(AssertionError e) {
 			System.out.println("error assertion failed");
 			Reporter.log("Exection unsuccessful!");
+		}
+	}
+	
+	public static void assertSmoke() {
+		try {
+			Assert.assertEquals(resultTitle, "Web Development Courses");
+			System.out.println("Smoke successful!");
+			Reporter.log("Smoke test successful");
+		}catch(AssertionError e) {
+			System.out.println("assertion error in smoke test");
+			Reporter.log("Execution Failed!");
 		}
 	}
 

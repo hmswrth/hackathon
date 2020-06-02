@@ -10,7 +10,7 @@ public class Locators extends BrowserSetup {
 	public static WebElement element;
 	public static JavascriptExecutor js = (JavascriptExecutor) driver;
 
-	public static WebElement searchtTextBox() { // returns search box webElement
+	public static WebElement searchTextBox() { // returns search box webElement
 		element = driver.findElement(By.xpath("//input[@placeholder='Search for anything']"));
 		return element;
 	}
@@ -18,6 +18,7 @@ public class Locators extends BrowserSetup {
 	public static WebElement filter() {
 //		element = driver.findElement(By.xpath("//*[@id='udemy']/div[2]/div[3]/div/div/div[5]/div[1]/div[1]/div[1]/button"));
 		element = driver.findElement(By.xpath("//label[@for='filter-button' and @data-purpose='open-filters']"));	
+//		element = driver.findElement(By.xpath("//*[@id='udemy']/div[2]/div[4]/div/div/div[5]/div[1]/div[1]/div[1]/button"));			
 		js.executeScript("arguments[0].scrollIntoView(true)", element);
 		return element;
 	}
@@ -81,7 +82,7 @@ public class Locators extends BrowserSetup {
 	}
 	
 	public static WebElement udemyBusiness() {
-		element = driver.findElement(By.xpath("//*[@id=\"udemy\"]/div[2]/div[3]/div[9]/div/div/div/div/div/div[2]/a"));
+		element = driver.findElement(By.xpath("//*[@id='udemy']/div[2]/div[3]/div[9]/div/div/div/div/div/div[2]/a"));
 		js.executeScript("arguments[0].scrollIntoView(true)", element);
 		return element;
 	}
@@ -99,6 +100,11 @@ public class Locators extends BrowserSetup {
 	public static WebElement getInTouch() {
 		element =  driver.findElement(By.xpath("//*[@id=\"mktoForm_1356\"]/div[17]/span/button"));
 		js.executeScript("arguments[0].scrollIntoView(true)", element);
+		return element;
+	}
+
+	public static WebElement getResultPageTitle() {
+		element = driver.findElement(By.xpath("//*[@id='udemy']/div[2]/div[4]/div/div/div[2]/div/h1"));
 		return element;
 	}
 
