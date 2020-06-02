@@ -7,9 +7,33 @@
         <methods>
           <include name="udemyA" invocation-numbers="0"/>
           <include name="afterTest"/>
+          <include name="takeScreenshot"/>
+          <include name="takeScreenShot"/>
+          <include name="languageFilter"/>
+          <include name="levelListBox"/>
+          <include name="levelFilter"/>
           <include name="beforeTest"/>
+          <include name="getErrorMsg"/>
+          <include name="filterBtn"/>
+          <include name="emailBox"/>
+          <include name="getInTouchBtn"/>
+          <include name="languageListBox"/>
+          <include name="udemyB"/>
         </methods>
       </class> <!-- test.java.NewTest -->
+      <class name="test.java.RegressionTest">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="languageListBox"/>
+          <include name="filterBtn"/>
+          <include name="languageFilter"/>
+          <include name="levelListBox"/>
+          <include name="afterTest"/>
+          <include name="takeScreenshot"/>
+          <include name="levelFilter"/>
+          <include name="search" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- test.java.RegressionTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

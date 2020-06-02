@@ -117,7 +117,7 @@ public class BrowserSetup {
 			e.printStackTrace();
 		}
 		String url = prop.getProperty("url2"); // retrieve url from properties file
-		driver.get(url); // to open the Website
+		driver.navigate().to(url); // to open the Website
 		driver.manage().window().maximize(); // this is used to maximize the browser
 		wait=new WebDriverWait(driver,15);
 //		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='header-search-field']")));

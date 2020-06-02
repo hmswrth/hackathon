@@ -24,7 +24,8 @@ public class Main {
 		Thread.sleep(2000);
 //		try {
 		WebDriverWait wait = new WebDriverWait(driver,15);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='filter-form']/div/div[5]/label")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"udemy\"]/div[2]/div[4]/div/div/div[5]/div[1]/div[1]/div[1]/button")));
+		
 		driver.findElement(By.xpath("//*[@id='filter-form']/div/div[5]/label")).click();
 //		}catch(Exception e) {
 //			driver.findElement(By.xpath("//*[@id=\"udemy\"]/div[2]/div[4]/div/div/div[5]/div[1]/div[1]/div[1]/button")).click();

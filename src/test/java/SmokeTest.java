@@ -1,28 +1,38 @@
 package test.java;
 
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import browser.BrowserSetup;
 import excel.Read;
 import home.Home;
 
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.AfterTest;
-
 public class SmokeTest extends BrowserSetup {
-	@Test(dataProvider = "dp")
-	public void smokeTest(String s) {
+	@Test(priority = 0)
+	public void getURL() {
 		Home.getUrl();
+	}
+
+	@Test(dataProvider = "dp", priority = 1)
+	public void search(String s) {
 		Home.searchTextBox(s);
 	}
 
-	@BeforeTest
+	@Test(priority = 2)
+	public void getResultTitle() {
+		Home.getResultPageTitle();
+	}
+
+	@Test(priority = 3)
+	public void assertSmoke() {
+		Home.assertSmoke();
+	}
+
+	@BeforeClass
 	public void beforeTest() {
 		setBrowser();
 	}
 
-	@AfterTest
+	@AfterClass
 	public void afterTest() {
 		closeBrowser();
 	}
