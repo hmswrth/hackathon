@@ -21,6 +21,11 @@ public class SmokeTest extends BrowserSetup {
 	public void getResultTitle() {
 		Home.getResultPageTitle();
 	}
+	
+	@Test(priority = 2)
+	public void getResultScreenshot() {
+		Home.takeScreenshot();
+	}
 
 	@Test(priority = 3)
 	public void assertSmoke() {
