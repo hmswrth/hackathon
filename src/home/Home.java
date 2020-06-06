@@ -179,7 +179,7 @@ public class Home extends BrowserSetup {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='udemy']/div[2]/div[4]/div/div/div[2]/div/h1")));
 		element = Locators.getResultPageTitle();
 		resultTitle = element.getText();
-		System.out.println(resultTitle);
+		//System.out.println(resultTitle);
 	}
 	public static void assert1() {
 		try {
@@ -189,7 +189,7 @@ public class Home extends BrowserSetup {
 			Reporter.log("Execution Successful!");
 		} catch (AssertionError e) {
 			System.out.println("Assertion Failed");
-			Reporter.log("Exection unsuccessful!");
+			Reporter.log("Execution unsuccessful!");
 		}
 	}
 	
@@ -198,16 +198,17 @@ public class Home extends BrowserSetup {
 			Assert.assertEquals(errorMsg, "Must be valid company email.\n" + 
 					"example@yourdomain.com");
 			System.out.println("Pass");
-			Reporter.log("Exection Successful1");
+			Reporter.log("Execution Successful!");
 		}catch(AssertionError e) {
-			System.out.println("error assertion failed");
-			Reporter.log("Exection unsuccessful!");
+			System.out.println("Assertion Failed");
+			Reporter.log("Execution unsuccessful!");
 		}
 	}
 	
 	public static void assertSmoke() {
 		try {
 			Assert.assertEquals(resultTitle, "Web Development Courses");
+			System.out.println("Actual Result:   "+resultTitle + "\r\n" + "Expected Result: Web Development Courses" );
 			System.out.println("Smoke successful!");
 			Reporter.log("Smoke test successful");
 		}catch(AssertionError e) {
