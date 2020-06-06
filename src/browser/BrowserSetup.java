@@ -6,6 +6,7 @@ import java.util.Properties;
 import java.util.Scanner;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -63,6 +64,8 @@ public class BrowserSetup {
 	public static WebDriver setChromeDriver() { // Setting chrome driver
 		String driverPath = System.getProperty("user.dir") + "/Drivers/chromedriver";
 		System.setProperty("webdriver.chrome.driver", driverPath);
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors");
 		driver = new ChromeDriver(); // instantiate chrome driver
 		return driver;
 	}
