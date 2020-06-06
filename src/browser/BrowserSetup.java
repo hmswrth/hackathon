@@ -66,7 +66,7 @@ public class BrowserSetup {
 		System.setProperty("webdriver.chrome.driver", driverPath);
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors");
-		driver = new ChromeDriver(); // instantiate chrome driver
+		driver = new ChromeDriver(options); // instantiate chrome driver
 		return driver;
 	}
 
