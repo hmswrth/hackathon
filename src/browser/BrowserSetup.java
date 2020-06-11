@@ -64,9 +64,9 @@ public class BrowserSetup {
 	public static WebDriver setChromeDriver() { // Setting chrome driver
 		String driverPath = System.getProperty("user.dir") + "/Drivers/chromedriver";
 		System.setProperty("webdriver.chrome.driver", driverPath);
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors");
-		driver = new ChromeDriver(options); // instantiate chrome driver
+//		ChromeOptions options = new ChromeOptions();
+//		options.addArguments("--headless", "--window-size=1920,1200","--ignore-certificate-errors","--start-maximized");
+		driver = new ChromeDriver(); // instantiate chrome driver
 		return driver;
 	}
 

@@ -92,13 +92,15 @@ public class Locators extends BrowserSetup {
 		return element;
 	}
 	public static WebElement errorMsg() {
-		element = driver.findElement(By.xpath("//*[@id=\"mktoForm_1356\"]/div[2]/div[1]/div[2]/div[2]/div[2]"));
+//		element = driver.findElement(By.xpath("//*[@id=\"mktoForm_1356\"]/div[2]/div[1]/div[2]/div[2]/div[2]"));
+		element = driver.findElement(By.xpath("//*[@id=\"mktoForm_2834\"]/div[3]/div[1]/div[2]/div[2]/div[2]"));
 		js.executeScript("arguments[0].scrollIntoView(true)", element);
 		return element;
 	}
 	
 	public static WebElement getInTouch() {
-		element =  driver.findElement(By.xpath("//*[@id=\"mktoForm_1356\"]/div[17]/span/button"));
+		//element =  driver.findElement(By.xpath("//*[@id=\"mktoForm_1356\"]/div[17]/span/button"));
+		element = driver.findElement(By.xpath("//button[@type='submit']"));
 		js.executeScript("arguments[0].scrollIntoView(true)", element);
 		return element;
 	}

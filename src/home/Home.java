@@ -139,7 +139,13 @@ public class Home extends BrowserSetup {
 	}
 	
 	public static void emailBox() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='Email']")));
+		try {
 		element = Locators.emailTextbox();
+		}catch (NoSuchElementException n) {
+			System.out.println("trying for email box again");
+			element = Locators.emailTextbox();
+		}
 		element.sendKeys("breakers");
 	}
 	
