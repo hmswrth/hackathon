@@ -69,7 +69,9 @@ public class BrowserSetup {
 		options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
 		driver = new ChromeDriver(options); // instantiate chrome driver
-		return driver;
+		return driver;    
+		
+		
 	}
 
 	public static WebDriver setFirefoxDriver() { // Setting firefox Driver
