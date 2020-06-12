@@ -64,9 +64,11 @@ public class BrowserSetup {
 	public static WebDriver setChromeDriver() { // Setting chrome driver
 		String driverPath = System.getProperty("user.dir") + "/Drivers/chromedriver";
 		System.setProperty("webdriver.chrome.driver", driverPath);
-//		ChromeOptions options = new ChromeOptions();
+		ChromeOptions options = new ChromeOptions();
 //		options.addArguments("--headless", "--window-size=1920,1200","--ignore-certificate-errors","--start-maximized");
-		driver = new ChromeDriver(); // instantiate chrome driver
+		options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+		driver = new ChromeDriver(options); // instantiate chrome driver
 		return driver;
 	}
 
