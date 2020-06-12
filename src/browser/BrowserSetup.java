@@ -66,8 +66,9 @@ public class BrowserSetup {
 		System.setProperty("webdriver.chrome.driver", driverPath);
 		ChromeOptions options = new ChromeOptions();
 //		options.addArguments("--headless", "--window-size=1920,1200","--ignore-certificate-errors","--start-maximized");
-		options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
+//		options.addArguments("--no-sandbox");
+//        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--headless");
 		driver = new ChromeDriver(options); // instantiate chrome driver
 		return driver;    
 		
