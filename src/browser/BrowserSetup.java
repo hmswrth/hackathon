@@ -15,6 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BrowserSetup {
 	public static WebDriver driver;
 	public static WebDriverWait wait;
+	public static String chromeDriverPath = "/usr/bin/chromedriver";
 
 	public static WebDriver setBrowser() {
 //		Scanner scan = new Scanner(System.in); // to take input from user
@@ -63,7 +64,7 @@ public class BrowserSetup {
 
 	public static WebDriver setChromeDriver() { // Setting chrome driver
 		String driverPath = System.getProperty("user.dir") + "/Drivers/chromedriver";
-		System.setProperty("webdriver.chrome.driver", driverPath);
+		System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		ChromeOptions options = new ChromeOptions();
 //		options.addArguments("--headless", "--window-size=1920,1200","--ignore-certificate-errors","--start-maximized");
 		options.addArguments("--no-sandbox");
